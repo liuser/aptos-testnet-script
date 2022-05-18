@@ -36,10 +36,16 @@ aptos genesis set-validator-configuration \
     --full-node-host fn.bot.aptosdev.com:6182
 
 
+# 
+#使用默认root key
+#echo     "---\nroot_key: \"0x5243ca72b0766d9e9cbf2debf6153443b01a1e0e6d086c7ea206eaf6f8043956\"\nusers:\n  - aptosbot\nchain_id: 23" > ~/$WORKSPACE/layout.yaml
+#使用自己生成的key
+aptos key generate --output-file ~/$WORKSPACE/key
+_x="0x"
+_y=$(cat ~/$WORKSPACE/key.pub)
+echo       "---\nroot_key: \"$_x$_y\"\nusers:\n  - aptosbot\nchain_id: 23" > ~/$WORKSPACE/layout.yaml
 
 
-
-echo     "---\nroot_key: \"0x5243ca72b0766d9e9cbf2debf6153443b01a1e0e6d086c7ea206eaf6f8043956\"\nusers:\n  - aptosbot\nchain_id: 23" > ~/$WORKSPACE/layout.yaml
 
 
 
